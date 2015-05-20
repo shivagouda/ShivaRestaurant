@@ -1,0 +1,10 @@
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\ShivaRestaurant.dll.config
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\ShivaRestaurant.dll
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\ShivaRestaurant.pdb
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\obj\Debug\ShivaRestaurant.csprojResolveAssemblyReference.cache
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\obj\Debug\ShivaRestaurant.dll
+c:\users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\obj\Debug\ShivaRestaurant.pdb
+C:\Users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\EntityFramework.dll
+C:\Users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\EntityFramework.SqlServer.dll
+C:\Users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\EntityFramework.xml
+C:\Users\shiva_000\documents\visual studio 2013\Projects\ShivaRestaurant\ShivaRestaurant\bin\EntityFramework.SqlServer.xml

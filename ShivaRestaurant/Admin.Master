@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="ShivaRestaurant.Admin1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/StyleSheet1.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.0.js"></script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+     <div class="container">
+        <nav class="navbar navbar-inverted" role="navigation" style="background-color:Background;color:black">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Admin Home</a></li>
+                        <li><a href="#">MenuCategories</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MenuItems</a>
+                             <ul class="dropdown-menu" style="background-color:Background;color:black">
+                                <li><a href="#">Appetizers</a></li>
+                                <li><a href="#">Soups</a></li>
+                                <li><a href="#">Indian-Veg</a></li>
+                                <li><a href="#">Indian-NonVeg</a></li>
+                                <li><a href="#">Breads</a></li>
+                                <li><a href="#">Chinese</a></li>
+                                <li><a href="#">Sweets</a></li>
+                                 </ul>
+                        </li>
+                         <li class="dropdown">
+                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reservations</a>
+                              <ul class="dropdown-menu" style="background-color:Background;color:black">
+                                 <li><a href="#">Table</a></li>
+                                 <li><a href="#">PartyHall</a></li>
+                             </ul>
+                         </li>
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">GuestMessages</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="Default.aspx">RestaurantHome </a></li>                   
+                        
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

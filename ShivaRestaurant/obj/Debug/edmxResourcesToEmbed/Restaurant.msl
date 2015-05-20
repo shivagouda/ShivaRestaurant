@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+    <EntitySetMapping Name="Partybookings">
+      <EntityTypeMapping TypeName="RestaurantModel.Partybooking">
+        <MappingFragment StoreEntitySet="Partybooking">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Event_Date" ColumnName="Event_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soups">
+      <EntityTypeMapping TypeName="RestaurantModel.Soup">
+        <MappingFragment StoreEntitySet="Soups">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertPartybooking" FunctionName="RestaurantModel.Store.SP_InsertPartybooking" />
+    <FunctionImportMapping FunctionImportName="SP_InsertPartybookingOutID" FunctionName="RestaurantModel.Store.SP_InsertPartybookingOutID" />
+    <EntitySetMapping Name="Tablebookings">
+      <EntityTypeMapping TypeName="RestaurantModel.Tablebooking">
+        <MappingFragment StoreEntitySet="Tablebooking">
+          <ScalarProperty Name="Persons_Count" ColumnName="Persons_Count" />
+          <ScalarProperty Name="Reserve_Time" ColumnName="Reserve_Time" />
+          <ScalarProperty Name="Reserve_Date" ColumnName="Reserve_Date" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertTablebooking" FunctionName="RestaurantModel.Store.SP_InsertTablebooking" />
+    <EntitySetMapping Name="Guestbooks">
+      <EntityTypeMapping TypeName="RestaurantModel.Guestbook">
+        <MappingFragment StoreEntitySet="Guestbook">
+          <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetGuestMessages" FunctionName="RestaurantModel.Store.SP_GetGuestMessages">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RestaurantModel.SP_GetGuestMessages_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+          <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertGuestMessage" FunctionName="RestaurantModel.Store.SP_InsertGuestMessage" />
+    <FunctionImportMapping FunctionImportName="SP_SelectGuestMessages" FunctionName="RestaurantModel.Store.SP_SelectGuestMessages">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RestaurantModel.SP_SelectGuestMessages_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+          <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_InsertCategories" FunctionName="RestaurantModel.Store.SP_InsertCategories" />
+    <FunctionImportMapping FunctionImportName="SP_InsertMenuItems" FunctionName="RestaurantModel.Store.SP_InsertMenuItems" />
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="RestaurantModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Cat_Image_Path" ColumnName="Cat_Image_Path" />
+          <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuItems">
+      <EntityTypeMapping TypeName="RestaurantModel.MenuItem">
+        <MappingFragment StoreEntitySet="MenuItems">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Item_Image_Path" ColumnName="Item_Image_Path" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ShivaRestaurant.Site1" %>
+
+<%@ Register Src="~/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Shiva's Restaurant</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/StyleSheet1.css" rel="stylesheet" />
+    
+    <script src="Scripts/jquery-2.1.0.js"></script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="container">
+
+        <div class="jumbotron" style="background-image:url(Images/banner.png);color:white;height:385px">
+            <h2>Shiva's Restaurant<span class="glyphicon glyphicon-thumbs-up"></span></h2>
+          <h4 style="color:white">Delicious Indian and Indo-Chinese food</h4>
+            
+        </div>
+        <nav class="navbar navbar-default" role="navigation" style="background-color:#480000;color:white">
+            <div class="container-fluid" style="height:10px">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:10px">
+                    <ul class="nav navbar-nav">
+                        <li><a href="Default.aspx" style="color:white">Home</a></li>
+                        <li><a href="Info.aspx" style="color:white">AboutUs</a></li>
+                        <li><a href="Order.aspx" style="color:white">Menu</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color:#480000;color:white">MenuItems <b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="background-color:#480000;color:white">
+                                <li><a href="Appetizer.aspx" style="background-color:#480000;color:white">Appetizers</a></li>
+                                <li><a href="Soup.aspx" style="background-color:#480000;color:white">Soups</a></li>
+                                <li><a href="IndoVeg.aspx" style="background-color:#480000;color:white">Indian-Veg</a></li>
+                                <li><a href="IndoNonVeg.aspx" style="background-color:#480000;color:white">Indian-NonVeg</a></li>
+                                <li><a href="Breads.aspx" style="background-color:#480000;color:white">Breads</a></li>
+                                <li><a href="Chinese.aspx" style="background-color:#480000;color:white">Chinese</a></li>
+                                <li><a href="Sweets.aspx" style="background-color:#480000;color:white">Sweets</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white;background-color:#480000">Reservation<b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="background-color:#480000;color:white">
+                                  <li><a href="Reservation.aspx" style="color:white;background-color:#480000">Table</a></li>
+                                  <li><a href="Partybooking.aspx" style="color:white;background-color:#480000">Partyhall</a></li>
+                            </ul>
+                        </li>
+                      
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="GuestBook.aspx" style="color:white">GuestBook</a></li>
+                        <li><a href="Contact.aspx" style="color:white">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+             
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <uc1:Footer runat="server" ID="Footer" />
+    </div>
+    </form>
+    
+</body>
+</html>

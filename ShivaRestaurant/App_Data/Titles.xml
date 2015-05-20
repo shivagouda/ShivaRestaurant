@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Titles xmlns="http://tempuri.org/Titles.xsd">
+  <Title Name ="Select" Value=""/>
+  <Title Name="Mr" Value="Mr" />
+  <Title Name="Mrs" Value="Mrs" />
+  <Title Name="Ms" Value="Ms" />
+  <Title Name="Madam" Value="Madam" />
+</Titles>

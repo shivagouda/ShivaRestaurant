@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Cat_Image_Path" Type="nvarchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guestbook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guest_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Guest_Message" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MenuItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Item_Image_Path" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partybooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Event_Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Soups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Pic" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tablebooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Reserve_Date" Type="date" Nullable="false" />
+          <Property Name="Reserve_Time" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Persons_Count" Type="int" />
+        </EntityType>
+        <Association Name="FK__MenuItems__Categ__3C34F16F">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItems">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_GetGuestMessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_InsertCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cat_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Cat_Image_Path" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertGuestMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Guest_Message" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertMenuItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Item_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="Item_Image_Path" Type="nvarchar" Mode="In" />
+          <Parameter Name="CategoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertPartybooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Event_Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_InsertPartybookingOutID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Event_Date" Type="date" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_InsertTablebooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Reserve_Date" Type="date" Mode="In" />
+          <Parameter Name="Reserve_Time" Type="nvarchar" Mode="In" />
+          <Parameter Name="Persons_Count" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SelectGuestMessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guestbook" EntityType="Self.Guestbook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partybooking" EntityType="Self.Partybooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soups" EntityType="Self.Soups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tablebooking" EntityType="Self.Tablebooking" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MenuItems__Categ__3C34F16F" Association="Self.FK__MenuItems__Categ__3C34F16F">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="MenuItems" EntitySet="MenuItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Partybooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Event_Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Soup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Partybookings" EntityType="Self.Partybooking" />
+          <EntitySet Name="Soups" EntityType="Self.Soup" />
+          <FunctionImport Name="SP_InsertPartybooking">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telephone" Mode="In" Type="String" />
+            <Parameter Name="Event_Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertPartybookingOutID">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Telephone" Mode="In" Type="String" />
+            <Parameter Name="Event_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Tablebookings" EntityType="RestaurantModel.Tablebooking" />
+          <FunctionImport Name="SP_InsertTablebooking">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Telephone" Mode="In" Type="String" />
+            <Parameter Name="Reserve_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Reserve_Time" Mode="In" Type="String" />
+            <Parameter Name="Persons_Count" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Guestbooks" EntityType="RestaurantModel.Guestbook" />
+          <FunctionImport Name="SP_GetGuestMessages" ReturnType="Collection(RestaurantModel.SP_GetGuestMessages_Result)" />
+          <FunctionImport Name="SP_InsertGuestMessage">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Guest_Message" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SelectGuestMessages" ReturnType="Collection(RestaurantModel.SP_SelectGuestMessages_Result)" />
+          <FunctionImport Name="SP_InsertCategories">
+            <Parameter Name="Cat_Name" Mode="In" Type="String" />
+            <Parameter Name="Cat_Image_Path" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_InsertMenuItems">
+            <Parameter Name="Item_Name" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Item_Image_Path" Mode="In" Type="String" />
+            <Parameter Name="CategoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Categories" EntityType="RestaurantModel.Category" />
+          <EntitySet Name="MenuItems" EntityType="RestaurantModel.MenuItem" />
+          <AssociationSet Name="FK__MenuItems__Categ__3C34F16F" Association="RestaurantModel.FK__MenuItems__Categ__3C34F16F">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tablebooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Reserve_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Reserve_Time" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Persons_Count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Guestbook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guest_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Guest_Message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SP_GetGuestMessages_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Guest_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Guest_Message" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_SelectGuestMessages_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Guest_Name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Guest_Message" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cat_Image_Path" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="RestaurantModel.FK__MenuItems__Categ__3C34F16F" FromRole="Category" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Item_Image_Path" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="RestaurantModel.FK__MenuItems__Categ__3C34F16F" FromRole="MenuItem" ToRole="Category" />
+        </EntityType>
+        <Association Name="FK__MenuItems__Categ__3C34F16F">
+          <End Type="RestaurantModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="RestaurantModel.MenuItem" Role="MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+          <EntitySetMapping Name="Partybookings">
+            <EntityTypeMapping TypeName="RestaurantModel.Partybooking">
+              <MappingFragment StoreEntitySet="Partybooking">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Event_Date" ColumnName="Event_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soups">
+            <EntityTypeMapping TypeName="RestaurantModel.Soup">
+              <MappingFragment StoreEntitySet="Soups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertPartybooking" FunctionName="RestaurantModel.Store.SP_InsertPartybooking" />
+          <FunctionImportMapping FunctionImportName="SP_InsertPartybookingOutID" FunctionName="RestaurantModel.Store.SP_InsertPartybookingOutID" />
+          <EntitySetMapping Name="Tablebookings">
+            <EntityTypeMapping TypeName="RestaurantModel.Tablebooking">
+              <MappingFragment StoreEntitySet="Tablebooking">
+                <ScalarProperty Name="Persons_Count" ColumnName="Persons_Count" />
+                <ScalarProperty Name="Reserve_Time" ColumnName="Reserve_Time" />
+                <ScalarProperty Name="Reserve_Date" ColumnName="Reserve_Date" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertTablebooking" FunctionName="RestaurantModel.Store.SP_InsertTablebooking" />
+          <EntitySetMapping Name="Guestbooks">
+            <EntityTypeMapping TypeName="RestaurantModel.Guestbook">
+              <MappingFragment StoreEntitySet="Guestbook">
+                <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+                <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetGuestMessages" FunctionName="RestaurantModel.Store.SP_GetGuestMessages">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantModel.SP_GetGuestMessages_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+                <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertGuestMessage" FunctionName="RestaurantModel.Store.SP_InsertGuestMessage" />
+          <FunctionImportMapping FunctionImportName="SP_SelectGuestMessages" FunctionName="RestaurantModel.Store.SP_SelectGuestMessages">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestaurantModel.SP_SelectGuestMessages_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Guest_Name" ColumnName="Guest_Name" />
+                <ScalarProperty Name="Guest_Message" ColumnName="Guest_Message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_InsertCategories" FunctionName="RestaurantModel.Store.SP_InsertCategories" />
+          <FunctionImportMapping FunctionImportName="SP_InsertMenuItems" FunctionName="RestaurantModel.Store.SP_InsertMenuItems" />
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RestaurantModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Cat_Image_Path" ColumnName="Cat_Image_Path" />
+                <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="RestaurantModel.MenuItem">
+              <MappingFragment StoreEntitySet="MenuItems">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Item_Image_Path" ColumnName="Item_Image_Path" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cat_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cat_Image_Path" Type="nvarchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Guestbook">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guest_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Guest_Message" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MenuItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Item_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Item_Image_Path" Type="nvarchar" MaxLength="75" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Partybooking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="5" />
+    <Property Name="Name" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Event_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Soups">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Pic" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tablebooking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Reserve_Date" Type="date" Nullable="false" />
+    <Property Name="Reserve_Time" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Persons_Count" Type="int" />
+  </EntityType>
+  <Association Name="FK__MenuItems__Categ__3C34F16F">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuItems">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_GetGuestMessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_InsertCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cat_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cat_Image_Path" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertGuestMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Guest_Message" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertMenuItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Item_Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Price" Type="money" Mode="In" />
+    <Parameter Name="Item_Image_Path" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertPartybooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Event_Date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_InsertPartybookingOutID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Title" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Event_Date" Type="date" Mode="In" />
+    <Parameter Name="Id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="SP_InsertTablebooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Telephone" Type="nvarchar" Mode="In" />
+    <Parameter Name="Reserve_Date" Type="date" Mode="In" />
+    <Parameter Name="Reserve_Time" Type="nvarchar" Mode="In" />
+    <Parameter Name="Persons_Count" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_SelectGuestMessages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="RestaurantModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guestbook" EntityType="Self.Guestbook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuItems" EntityType="Self.MenuItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partybooking" EntityType="Self.Partybooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Soups" EntityType="Self.Soups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tablebooking" EntityType="Self.Tablebooking" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__MenuItems__Categ__3C34F16F" Association="Self.FK__MenuItems__Categ__3C34F16F">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="MenuItems" EntitySet="MenuItems" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
