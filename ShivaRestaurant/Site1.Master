@@ -26,8 +26,8 @@
           <h4 style="color:white">Delicious Indian and Indo-Chinese food</h4>
             
         </div>
-        <nav class="navbar navbar-default" role="navigation" style="background-color:#480000;color:white">
-            <div class="container-fluid" style="height:10px">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid"   style="background-color:#480000;color:white">
                 <!-- Brand and toggle get grouped for better mobile display -->
                   <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -38,28 +38,28 @@
                     </button>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:10px">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color:#480000;color:white">
                     <ul class="nav navbar-nav">
-                        <li><a href="Default.aspx" style="color:white">Home</a></li>
-                        <li><a href="Info.aspx" style="color:white">AboutUs</a></li>
-                        <li><a href="Order.aspx" style="color:white">Menu</a></li>
+                        <li><a href="Default.aspx">Home</a></li>
+                        <li><a href="Info.aspx">AboutUs</a></li>
+                        <li><a href="Order.aspx">Menu</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background-color:#480000;color:white">MenuItems <b class="caret"></b></a>
-                            <ul class="dropdown-menu" style="background-color:#480000;color:white">
-                                <li><a href="Appetizer.aspx" style="background-color:#480000;color:white">Appetizers</a></li>
-                                <li><a href="Soup.aspx" style="background-color:#480000;color:white">Soups</a></li>
-                                <li><a href="IndoVeg.aspx" style="background-color:#480000;color:white">Indian-Veg</a></li>
-                                <li><a href="IndoNonVeg.aspx" style="background-color:#480000;color:white">Indian-NonVeg</a></li>
-                                <li><a href="Breads.aspx" style="background-color:#480000;color:white">Breads</a></li>
-                                <li><a href="Chinese.aspx" style="background-color:#480000;color:white">Chinese</a></li>
-                                <li><a href="Sweets.aspx" style="background-color:#480000;color:white">Sweets</a></li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MenuItems <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="Appetizer.aspx">Appetizers</a></li>
+                                <li><a href="Soup.aspx">Soups</a></li>
+                                <li><a href="IndoVeg.aspx">Indian-Veg</a></li>
+                                <li><a href="IndoNonVeg.aspx">Indian-NonVeg</a></li>
+                                <li><a href="Breads.aspx">Breads</a></li>
+                                <li><a href="Chinese.aspx">Chinese</a></li>
+                                <li><a href="Sweets.aspx">Sweets</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white;background-color:#480000">Reservation<b class="caret"></b></a>
-                            <ul class="dropdown-menu" style="background-color:#480000;color:white">
-                                  <li><a href="Reservation.aspx" style="color:white;background-color:#480000">Table</a></li>
-                                  <li><a href="Partybooking.aspx" style="color:white;background-color:#480000">Partyhall</a></li>
+                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reservation<b class="caret"></b></a>
+                            <ul class="dropdown-menu" >
+                                  <li><a href="Reservation.aspx">Table</a></li>
+                                  <li><a href="Partybooking.aspx">Partyhall</a></li>
                             </ul>
                         </li>
                       
